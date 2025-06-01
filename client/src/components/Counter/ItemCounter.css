@@ -1,0 +1,61 @@
+.food-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+/* Initial '+' button when count is 0 */
+.add {
+  position: relative; 
+  left: 70px;
+  bottom: 4px;
+  cursor: pointer;
+}
+
+.add p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Counter box when count > 0 */
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background-color: transparent;
+  padding: 2px 2px;
+  border-radius: 10px;
+}
+
+  /* + and - buttons */
+.addremove {
+  background-color: transparent;
+  padding:0px 6px;
+  border: 1px solid #636161;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.addremove:hover {
+  background-color: #d0d0d0;
+}
+
+.addremove p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Count number */
+.control p:nth-child(2) {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  width: 26px;
+  text-align: center;
+}

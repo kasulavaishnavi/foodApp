@@ -1,0 +1,110 @@
+.cooking-instructions-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly lighter overlay */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Slide up from the bottom */
+  z-index: 1000;
+}
+
+.cooking-instructions-modal {
+  background-color: #F0F5F3; /* Light gray background */
+  padding: 20px;
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
+  width: 100%;
+  max-width: 600px; /* Adjust as needed */
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1); /* Subtle top shadow */
+  animation: slideUp 0.3s ease-out forwards; /* Slide up animation */
+  /* text-align: right; */
+  
+}
+
+.cooking-instructions-modal h2{
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: medium;
+  letter-spacing: 1px;
+  text-align: start;
+  color: #000;
+
+}
+.cooking-instructions-modal textarea{
+    background-color:  #F0F5F3;
+
+      width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-140%);
+    opacity: 1;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 90px;
+  right: 190px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  font-weight:lighter;
+  color: white; /* Light gray close button */
+  cursor: pointer;
+  width: 61px;
+  height: 61px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.modal-description {
+  font-size: 0.9rem;
+  color: #8e8e93;
+  margin-bottom: 20px;
+  text-align: start;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 30px;
+  padding-top: 15px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight:lighter;
+  letter-spacing: 1px;
+  
+}
+
+.modal-actions button:first-child {
+  background-color: #ededf1; /* Light gray cancel button */
+  color: #000;
+}
+
+.modal-actions .next-button {
+  background-color: #505050; /* Blue next button */
+  color: white;
+
+}

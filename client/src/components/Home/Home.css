@@ -1,0 +1,21 @@
+.home{
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.next-button {
+    display: flex;
+align-items: center;
+justify-content: end;
+margin: 2px 40px 10px 0px;
+}
+ .next{
+    background-color: gray;
+    border-radius: 10px;
+    width: 90px;
+    height: 30px;
+    border: none;
+font-size: medium;
+font-weight: 500;
+
+}

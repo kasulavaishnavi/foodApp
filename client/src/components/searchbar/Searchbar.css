@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+
+.top-title{
+     font-family: "Inter", sans-serif;
+margin: 20px;
+     font-size: medium;
+     letter-spacing: 1px;
+     font-weight: 100;
+     line-height: 29px;
+}
+
+.search-bar{
+
+display: flex;
+align-items: center;
+justify-content: start;
+flex-direction: row;
+height: 50px;
+width: 370px;
+background-color: #F0F5F3;
+border-radius: 10px;
+/* border: 1px solid black; */
+margin: 20px;
+
+
+}
+
+input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.search{
+    height: 18px;
+    margin-right: 8px;
+    color: #F0F5F3;
+    margin-left: 14px;
+}

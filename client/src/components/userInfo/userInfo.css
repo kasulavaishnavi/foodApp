@@ -1,0 +1,212 @@
+form{
+    max-width: 800px;
+  margin: 0px ;
+  background-color: #f7f7f7;
+  /* padding: 2px; */
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* userInfo.css */
+
+.user-info-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff; /* Match background */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Similar shadow */
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+}
+
+form .label {
+  font-size: 14px; /* Adjust font size */
+  font-weight:500 ;
+  margin: 20px 10px 10px 10px;
+  /* margin-top: 17px; */
+  color: #000; /* Darker text */
+}
+
+.name-phone,
+.address-fields {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Slightly less rounded */
+  font-size: 16px;
+}
+
+.address-fields {
+  flex-direction: column; /* Stack inputs for smaller screens */
+}
+
+.address-fields .form-input {
+  margin-bottom: 10px;
+}
+
+.delivery-time {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.save-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 0px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-bottom: 13px;
+}
+
+.saved-data-container {
+  /* margin-top: 2px; */
+  padding: 1px;
+  background-color: white; 
+  border-radius: 4px;
+}
+
+.saved-data-item {
+  margin-bottom: 10px;
+}
+
+.user-details{
+  font-weight:400;
+  color: #000;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  border-bottom: 4px solid #dfdcdc;
+}
+.delivery-address,
+.table-number,
+.delivery-info {
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 5px;
+  padding-top: 16px
+
+}
+
+
+.preparation-time{
+  padding: 10px 0px 10px 0px;
+  color: #000;
+font-size:small;
+
+}
+
+.edit-button {
+  background-color: #28a745; 
+  color: white;
+  border: none;
+  padding: 5px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+  margin-top: 5px;
+}
+/* Responsive */
+@media (max-width: 600px) {
+  .name-phone,
+  .address-fields {
+    flex-direction: column;
+  }
+  .form-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+
+.swipe-button {
+  position: relative;
+  width: 380px;
+  height: 90px;
+  background-color:white;
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  margin-top: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid gray;
+}
+
+.circle {
+  width: 75px;
+  height: 75px;
+  background-color: #999;
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; /* Arrow color */
+  font-size: 24px; /* Adjust size as needed */
+  font-weight: bold; /* Make it stand out */
+  transition: left 0.8s ease-in-out, background-color 0.9s ease-in-out;
+}
+
+.arrow-icon{
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.swipe-text {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #b5b4b4;
+  pointer-events: none;
+  z-index: 1;
+  transition: color 0.4s ease-in-out
+}
+
+
+
+/* Disabled state */
+.swipe-button.disabled {
+  background-color: white;
+  cursor: not-allowed;
+}
+
+.swipe-button.disabled .circle {
+  background-color: #aaa;
+}
+
+.swipe-button.disabled .swipe-text {
+  color: #777;
+}
+/* Swiped state: move the circle to the right */
+.swipe-button.swiped.swiped{
+  background-color: #007bff;
+}
+.swipe-button.swiped .circle {
+  left: calc(100% - 55px);
+  background-color: #fff;
+}
+.swipe-button.swiped .swipe-text {
+  color: transparent;
+}

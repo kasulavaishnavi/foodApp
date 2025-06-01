@@ -1,0 +1,83 @@
+
+.menu-boxes{
+    margin-left: 25px;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 17px;
+    overflow-x: scroll;
+     scrollbar-width: none;      
+    -ms-overflow-style: none;  
+
+
+}
+
+.menu-boxes::-webkit-scrollbar {
+    display: none;                  
+}
+
+.single-box{
+      height: 60px;
+    width: 60px;
+      display: flex;
+    flex-direction: column;
+    gap: 1px;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+    cursor: pointer;
+    border: 1px solid #616161;
+    border-radius: 5px;
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.08);
+   box-sizing: border-box; 
+flex-shrink: 0;
+} 
+
+img{
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+    margin-bottom: 2px;
+} 
+
+
+.single-box p {
+  font-size: 12px;
+  color: #333;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+.single-box.active{
+background-color: #616161;
+      box-shadow: 0 6px 6px rgba(0, 0, 0.4, 0.3);
+
+}
+.single-box.active img {
+  filter: brightness(0) invert(1); /* makes icon white */
+}
+
+.single-box.active p{
+    color: white;
+}
+
+/* @media (max-width: 420px) {
+
+
+  .single-box img {
+    height: 24px;
+    width: 24px;
+  }
+
+  .single-box p{
+    font-size: small;
+  }
+
+  .menu-boxes {
+    gap: 10px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+} */
