@@ -24,8 +24,8 @@
 
     useEffect(() => {
       Promise.all([
-        fetch("http://localhost:4000/api/food/orders").then((res) => res.json()),
-        fetch("http://localhost:4000/api/food").then((res) => res.json()),
+        fetch("https://foodapp-backend-h4kc.onrender.com/api/food/orders").then((res) => res.json()),
+        fetch("https://foodapp-backend-h4kc.onrender.com/api/food").then((res) => res.json()),
       ])
         .then(([ordersData, userDetailsData]) => {
           setOrders(ordersData);

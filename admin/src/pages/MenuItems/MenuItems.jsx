@@ -3,7 +3,7 @@ import "./MenuItems.css";
 import axios from "axios";
 
 const MenuItems = () => {
-  const url = "http://localhost:4000";
+  const url = "https://foodapp-backend-h4kc.onrender.com";
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",

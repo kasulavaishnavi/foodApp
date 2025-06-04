@@ -4,7 +4,7 @@ import { ItemContext } from "../../context/itemsContext/itemsContext";
 import ItemCounter from "../Counter/ItemCounter";
 
 const ItemDisplay = ({category}) => {
-  const url = "http://localhost:4000";
+  const url = "https://foodapp-backend-h4kc.onrender.com";
   const { food_list, filteredFoodList } = useContext(ItemContext);
 
   // Determine which list to display: filtered results or category-based

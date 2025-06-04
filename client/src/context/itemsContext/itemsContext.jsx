@@ -7,7 +7,7 @@ import axios from "axios"
 export const ItemContext = createContext(null);
 
 const ItemConetextProvider = (props) => {
-  const url = "http://localhost:4000";
+  const url = "https://foodapp-backend-h4kc.onrender.com";
   const [cart, setCart] = useState({});
   const [filteredFoodList, setFilteredFoodList] = useState(null);
 const [food_list, setFoodList] = useState([]);
