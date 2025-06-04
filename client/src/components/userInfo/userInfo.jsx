@@ -72,7 +72,7 @@ const UserInfo = ({ selectedChoice, totalPreparationTime, sendOrderToBackend = (
     console.log("Sending form data:", form);
     try {
       // Send the form data to the backend
-      const res = await axios.post("http://localhost:4000/api/food", form);
+      const res = await axios.post("https://foodapp-backend-h4kc.onrender.com/api/food", form);
       // console.log("Received response data:", res.data);
       setMostRecentUserInfo(res.data);
       setShowForm(false);
