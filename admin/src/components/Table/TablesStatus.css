@@ -1,0 +1,76 @@
+.tables-status-card {
+   padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 2px solid #dbd9d9;
+  padding: 20px;
+  margin: 10px;
+  color: #7a7a7a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.tables-status-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.tables-status-card h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.tables-status-card .legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.tables-status-card .legend-item {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.tables-status-card .legend-item.available {
+  background-color: #3DC35F; /* Green */
+}
+
+.tables-status-card .legend-item.unavailable {
+  background-color: white; /* Red */
+}
+
+.tables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); /* Smaller grid items */
+  gap: 8px;
+}
+
+.tables-grid .table {
+  background-color: #e0e0e0; /* Default neutral background */
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: #555;
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transition for visual feedback */
+}
+
+.tables-grid .table.available-bg {
+  background-color: #3DC35F; /* Light green */
+  color: #000000; /* Darker green text */
+}
+
+.tables-grid .table.unavailable-bg {
+  background-color: #ffffff; /* Light red */
+  color: #000000; /* Darker red text */
+}
+
+.tables-grid .table.cursor-pointer {
+  cursor: pointer; 
+}

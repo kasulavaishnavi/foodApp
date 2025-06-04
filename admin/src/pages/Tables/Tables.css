@@ -1,0 +1,139 @@
+
+.Main{
+  margin: 20px;
+  overflow-y: scroll;
+}
+.TableContainer {
+  margin-top: 20px;
+  background-color:white;
+  width: 1150px;
+  height: 87vh;
+  border-radius: 10px;
+}
+.TableHeading{
+padding: 10px;  
+font-weight: 500;
+}
+
+
+.TablesGrid {
+display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+gap: 20px;
+  background-color: transparent;
+  padding: 20px;
+}
+.SingleTable{
+ width: 85px;
+  height: 100px;
+  background-color: #F0F5F3;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #9993;
+border-radius: 10px;
+}
+
+.TableBtn{
+  border: none;
+  width: 20px;
+  margin-left: 60px;
+  margin-top: 6px;
+}
+
+.TableId{
+  font-size: 1.47rem;
+  text-align: center;
+  font-weight: 400;
+}
+.ChairIcon{
+  margin-left: 45px;
+  font-size: 10px;
+}
+
+
+.TableForm{
+margin-top: 25px;
+font-size: xx-large;
+}
+
+.ShowForm{
+  width: 230px;
+  height: 170px;
+  background-color: #F0F5F3;
+  padding: 20px;
+  box-shadow: 1px 3px 8px #888888;
+  position: relative;
+  left: 110px;
+  border-radius: 10px;
+  position: fixed;
+  top: 440px;
+}
+.FormHeading{
+  font-weight: 400;
+  font-size: large;
+}
+.Formlabel{
+  font-size: medium;
+}
+
+.FormInput{
+border-radius: 10px;
+border: none;
+}
+
+.FormCancelCreate{
+  margin-top: 15px;
+  display: flex;
+  gap: 20px;
+
+}
+
+.FormCancel{
+  padding: 5px;
+  border: none;
+    background-color: white;
+}
+
+.FormCreate{
+   padding: 7px;
+  border: none;
+    background-color: white;
+}
+.table-card, .add-table-card {
+  width: 50px;
+  height: 50px;
+  background: #f1f5f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.table-form {
+  position: absolute;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  padding: 1rem;
+  border-radius: 8px;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
+.table-form input, .table-form select {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.table-form button {
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}

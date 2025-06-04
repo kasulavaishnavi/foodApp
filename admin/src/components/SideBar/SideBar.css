@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+align-items: start;
+justify-content: start;
+flex-direction: column;
+padding: 6px 7px;
+margin-left: 8px;
+}
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #F0F5F3; /* Light gray circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #000;
+  cursor: pointer;
+
+}
+
+
+.menuItem1 .iconCircle1{
+   width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: white; /* Light gray circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #555;
+  cursor: pointer;
+  margin: 10px 0px 7px 3px;
+}
+
+
+.menu {
+  height: 88vh;
+  width: 50px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  padding: 10px;
+}
+
+.iconCircle.active{
+  background-color: #D9D9D9;
+}

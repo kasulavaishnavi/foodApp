@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext,useState,useEffect } from "react";
 import "./Cart.css";
 import { ItemContext } from "../../context/itemsContext/itemsContext";
 import ItemCounter from "../../components/Counter/ItemCounter";
@@ -6,10 +6,55 @@ import UserInfo from "../../components/userInfo/userInfo"
 import Instruction from "../../components/InstructionModal/Instruction";
 import {  menu_list } from "../../assests/assets";
 import Searchbar from "../../components/searchbar/Searchbar";
+import axios from "axios"
+
 const Cart = () => {
+  const url = "http://localhost:4000";
+
+
+    const sendOrderToBackend = async () => {
+    try {
+      // Prepare order details
+      const createOrder = {
+        items: Object.entries(cart).map(([itemId, quantity]) => {
+          // Find full item info by id to include name, price, etc
+          const item = food_list.find(food => food._id === itemId);
+          return {
+            id: itemId,
+            name: item?.name || "Unknown",
+            quantity,
+            price: item?.price || 0,
+          };
+        }),
+        instructions,
+        orderType: selectedChoice,
+        totalAmount: selectedChoice === "takeAway"
+          ? totalCartAmount() + DeliveryCharge + Tax
+          : totalCartAmount() + Tax,
+        preparationTime: totalPreparationTime,
+        timestamp: new Date().toISOString()
+      };
+
+      // Post data to backend
+      const response = await axios.post(`${url}/api/food/orders/create`, createOrder);
+
+      console.log("Order response:", response.data);
+      alert("Order placed successfully!");
+
+    } catch (error) {
+      console.error("Error sending order:", error);
+      alert("Failed to place order. Please try again.");
+    }
+  };
+
+
+
+
   const { cart, food_list, removeFromCart, totalCartAmount } = useContext(ItemContext);
 
-  const [selectedChoice, setSelectedChoice] = useState(null);
+  const [selectedChoice, setSelectedChoice] = useState(() => {
+  return localStorage.getItem("selectedChoice") || null;
+});
   const [showInstructionsModal, setShowInstructionsModal] = useState(false);
   const [instructions, setInstructions] = useState("");
   const DeliveryCharge = 50;
@@ -55,6 +100,12 @@ const calculateTotalPreparationTime = () => {
     console.log("Cooking Instructions:", text);
   };
 
+useEffect(() => {
+  if (selectedChoice) {
+    localStorage.setItem("selectedChoice", selectedChoice);
+  }
+}, [selectedChoice]);
+
   return (
     <>
         <Searchbar/>
@@ -68,7 +119,7 @@ const calculateTotalPreparationTime = () => {
             if (quantity > 0) {
               return (
                 <div key={item._id} className="itemCard">
-                  <img src={item.image} alt="img" className="itemImg" />
+                  <img src={url+"/images/"+item.image} alt="img" className="itemImg" />
                   <div className="itemInfo">
                     <div className="itemTop">
                       <h3 className="name">{item.name}</h3>
@@ -111,14 +162,14 @@ const calculateTotalPreparationTime = () => {
 
       <div className="choice">
         <div
-          className={`dineIn ${selectedChoice === 'dineIn' ? 'active' : ''}`}
-          onClick={() => handleChoiceClick('dineIn')}
+          className={`dineIn ${selectedChoice === 'Dine In' ? 'active' : ''}`}
+          onClick={() => handleChoiceClick('Dine In')}
         >
           Dine In
         </div>
         <div
-          className={`takeAway ${selectedChoice === 'takeAway' ? 'active' : ''}`}
-          onClick={() => handleChoiceClick('takeAway')}
+          className={`takeAway ${selectedChoice === 'Take Away' ? 'active' : ''}`}
+          onClick={() => handleChoiceClick('Take Away')}
         >
           Take Away
         </div>
@@ -150,6 +201,9 @@ const calculateTotalPreparationTime = () => {
 
       <UserInfo
        selectedChoice={selectedChoice} totalPreparationTime={totalPreparationTime}
+       sendOrderToBackend={sendOrderToBackend}
+        cart={cart}                               // Pass cart if needed
+  food_list={food_list}  
       />
     </div>
        </>

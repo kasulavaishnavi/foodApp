@@ -1,0 +1,36 @@
+.ordersContainer{
+  margin: 20px;
+}
+
+
+.orderCards{
+    height: 88vh;
+  width: 90vw;
+  background-color: white;
+    padding: 15px;
+  margin-top: 10px;
+  border-radius:20px;  
+  overflow-y: scroll;
+}
+::-webkit-scrollbar{
+  display: none;
+}
+.SubContainer{
+    display: grid;
+ grid-template-columns: repeat(4, minmax(250px, 1fr));
+gap: 30px; 
+}
+
+
+.orderCards h2{
+  padding: 10px 0px 0px 10px;
+  color: #888;
+  font-weight: 500;
+  font-size: larger;
+  position: relative;
+  top: -20px;
+  left: -10px;
+
+}
+
+

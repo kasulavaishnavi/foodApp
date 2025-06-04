@@ -1,0 +1,63 @@
+.analytics-cards {
+  display: flex;
+  gap: 100px;
+  margin-top: 0px;
+  margin-left: 20px;
+}
+
+.card {
+  background-color: #F0F5F3;
+  border-radius: 8px;
+  /* text-align: start; */
+  border: 2px solid #D9D9D9;
+  width: 180px;
+  height: 106px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.rev{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+    color: #333;
+    gap: 0px;
+}
+.val{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
+
+}
+
+.icon {
+  font-size: 24px;
+  color: #000; /* Example icon color */
+  margin-bottom: 5px;
+  width: 60px;
+  height: 40px;
+  background-color: #E0EFFF;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value {
+  font-size: 18px;
+  font-weight:400;
+  color: #777;
+}
+
+.name {
+  font-size: 10px;
+  color: #777;
+  margin-top: 5px;
+  margin-left: 9px;
+}

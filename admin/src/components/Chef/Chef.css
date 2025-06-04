@@ -1,0 +1,31 @@
+.chef-orders-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+
+.chef-orders-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.chef-orders-card th,
+.chef-orders-card td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #eee;
+  color: #000;
+
+}
+
+.chef-orders-card th {
+  font-weight: bold;
+  color: #000;
+  background-color: #F0F0F0;
+}
+
+.chef-orders-card tbody tr:last-child td {
+  border-bottom: none;
+}

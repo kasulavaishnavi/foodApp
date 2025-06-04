@@ -1,0 +1,144 @@
+.orderItemContainer{
+  padding: 10px; 
+}
+.orderItemCard{
+    width: 250px;
+  height: 310px;
+  border-radius: 10px;
+
+}
+
+
+.orderHeader{
+  width: 220px;
+  height: 110px;
+  background-color: white;
+  display: flex;
+  gap: 30px;
+position: relative;
+left: 18px;
+top: 20px;
+padding: 10px;
+border-radius: 10px;
+font-size: small;
+}
+.ordertypeStatus{
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  width: 100px;
+  height: 60px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: small;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Color codes for status */
+.diffColor.processing {
+  background-color: #fff1da; /* light orange */
+}
+
+.diffColor.served {
+  background-color: #d1fadf; /* light green */
+}
+
+.diffColor.done {
+  background-color: #e0eaf4; /* light gray */
+}
+
+
+.diffColor.served h6{
+color: #147d37;
+}
+
+.diffColor.processing h6{
+color: #D87300;
+}
+.diffColor.done h6{
+color: #3181A3;
+}
+.diffColor h6{
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+
+.Ordericon{
+  color: #007AFF;
+  font-size: x-large;
+}
+.totalitem{
+  font-weight: 400;
+  font-size: large;
+  padding-top: 10px;
+}
+.ordertypeStatus.processing {
+  background-color: #fff1da; /* light orange */
+}
+
+.ordertypeStatus.served {
+  background-color: #d1fadf; /* light orange */
+}
+.ordertypeStatus.done {
+  background-color: #e0eaf4; /* light orange */
+}
+
+.orderSelect{
+  width: 90px;
+  font-size: small;
+}
+.orderSelect option{
+  font-size: x-small;
+}
+
+.orderItems{
+  width: 220px;
+
+  height: 100px;
+  background-color: white;
+  position: relative;
+  top: 36px;
+  left:  16px;
+  border-radius: 10px;
+  overflow-y: scroll;
+}
+
+.p{
+  padding: 20px 0px 0px 10px;
+  font-size: small;
+  word-spacing: 2px;
+  line-height: 1px;
+}
+
+.orderFooter{
+  width: 140px;
+  height: 35px;
+  position: relative;
+  top: 50px;
+  left: 50px;
+background-color:#007AFF;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50px;
+}
+
+.orderFooter.processing{
+  background-color: #FF9500;
+}
+.orderFooter.done{
+  background-color: #9BAEB3;
+}
+
+.orderFooter.served{
+  background-color: #31FF65 ;
+}
+
+.statusBottom{
+  color: #4d4d4d;
+  font-size: medium;
+  font-weight: 400;
+}

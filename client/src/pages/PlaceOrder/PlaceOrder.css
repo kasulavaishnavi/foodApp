@@ -5,16 +5,17 @@
     flex-direction: column;
     gap: 10px;
     font-family: "Roboto";
-    margin: 100px;
-    position: fixed;
+    text-align: center;
+    position: relative;
+    top: 170px;
 }
 
 .place-order-container img{
-width: 250px;
-height: 250px;
+width: 200px;
+height: 200px;
 }
 
 .next{
-    margin: 6px;
+
 }
 

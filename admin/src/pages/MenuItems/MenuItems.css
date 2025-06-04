@@ -1,0 +1,105 @@
+.container{
+    display: flex;
+}
+
+.add{
+    width: 40%;
+    height: 50%;
+    margin-left: max(5vw,25px);
+    margin-top: 50px;
+    color: #6d6d6d;
+    font-size: 16px;
+    background-color: #FEFEFE;
+    border-radius: 20px;
+}
+
+.add form{
+    gap: 6px;
+    padding: 20px;
+
+}
+
+.addImage i{
+font-size: large;
+}
+
+.addImage img{
+    width: 100px;
+    height: 100px;
+}
+.itemName, .ItemPrice{
+width: max(10%, 20px);
+}
+ input{
+    padding: 6px;
+}
+
+.addCategory{
+    display: flex;
+    gap: 10px;
+}
+.addCategory select{
+    padding: 4px;
+}
+
+.addBtn{
+    padding: 7px;
+    width: 47%;
+    align-self: center;
+    border-radius: 20px;
+    border: 1px solid #777;
+}
+
+.list{
+    margin: 50px;
+}
+.list p{
+    font-family: "Inter";
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.tableFormat{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 1px solid #cacaca;
+    font-size: 13px;
+}
+.tableFormat .title{
+background-color: #6d6d6d;
+}
+
+.tableFormat img{
+    width: 50px;
+
+}
+
+.cross{
+    cursor: pointer;
+}
+
+@media (max-width:500px) {
+.container{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+}
+    .add{
+        margin-top: 20px;
+        width: 50%;
+        height: 60%;
+    }
+    .list{
+        margin: 20px;
+    }
+    .tableFormat{
+        grid-template-columns: 1fr 3fr 1fr;
+        gap: 15px;
+    }
+    .tableFormat .title{
+        display: none;
+    }
+}

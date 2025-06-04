@@ -1,0 +1,67 @@
+.tables-container {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  max-width: 7000px;
+  margin: auto;
+  background-color: #f9f9f9;
+}
+
+.legend {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.legend .dot {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.legend .reserved {
+  background-color: green;
+}
+
+.legend .available {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.tables-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 70px);
+  gap: 1px;
+  justify-content: center;
+}
+
+.table-card {
+  padding: 1px;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #999;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.table-name{
+  font-size: 10px;
+}
+.table-chairs{
+  font-size: small;
+}
+
+.table-card.reserved {
+  background-color: green;
+  color: white;
+}
+
+.table-card.available {
+  background-color: white;
+  color: black;
+}

@@ -1,0 +1,14 @@
+.NavBar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 90vw;
+  height: 4vh;
+  position: relative; 
+  margin-bottom: 20px;
+
+}

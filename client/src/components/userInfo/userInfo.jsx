@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./userInfo.css";
 import { FaClock, FaMapMarkerAlt } from "react-icons/fa";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-
-const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
-
-    const navigate = useNavigate();
+const UserInfo = ({ selectedChoice, totalPreparationTime, sendOrderToBackend = () => {}, cart = {}, // Pass cart if needed
+  food_list = {} }) => {
+  const navigate = useNavigate();
 
   console.log(
     "UserInfo.jsx - Received totalPreparationTime prop:",
@@ -16,8 +15,12 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
   const [mostRecentUserInfo, setMostRecentUserInfo] = useState(null);
   const [showForm, setShowForm] = useState(true);
 
-  const [form, setForm] = useState({
-    orderType: "dine-in",
+  const [form, setForm] = useState(() => {
+    const savedForm = localStorage.getItem("userInfoForm");
+  return savedForm
+    ? JSON.parse(savedForm)
+    : {
+    orderType: selectedChoice || "Dine In", // Initialize with selectedChoice or "Dine In"
     name: "",
     number: "",
     street: "",
@@ -26,13 +29,14 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
     zipCode: "",
     country: "",
     table: "",
+    }
+  
   });
   const [swiped, setSwiped] = useState(false);
 
-
   // update orderType in form state when selectedChoice changes
   useEffect(() => {
-    const newOrderType = selectedChoice === "dineIn" ? "dine-in" : "takeaway";
+    const newOrderType = selectedChoice; // Directly use selectedChoice (which should be "Dine In" or "Take Away")
     console.log(
       "selectedChoice changed to:",
       selectedChoice,
@@ -42,12 +46,12 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
     setForm((prevForm) => ({
       ...prevForm,
       orderType: newOrderType,
-      table: newOrderType === "dine-in" ? prevForm.table : "",
-      street: newOrderType === "takeaway" ? prevForm.street : "",
-      city: newOrderType === "takeaway" ? prevForm.city : "",
-      state: newOrderType === "takeaway" ? prevForm.state : "",
-      zipCode: newOrderType === "takeaway" ? prevForm.zipCode : "",
-      country: newOrderType === "takeaway" ? prevForm.country : "",
+      table: newOrderType === "Dine In" ? prevForm.table : "",
+      street: newOrderType === "Take Away" ? prevForm.street : "",
+      city: newOrderType === "Take Away" ? prevForm.city : "",
+      state: newOrderType === "Take Away" ? prevForm.state : "",
+      zipCode: newOrderType === "Take Away" ? prevForm.zipCode : "",
+      country: newOrderType === "Take Away" ? prevForm.country : "",
     }));
     setMostRecentUserInfo(null);
     setShowForm(true);
@@ -68,12 +72,12 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
     console.log("Sending form data:", form);
     try {
       // Send the form data to the backend
-      const res = await axios.post("https://localhost:4000/api/food", form);
+      const res = await axios.post("http://localhost:4000/api/food", form);
       // console.log("Received response data:", res.data);
       setMostRecentUserInfo(res.data);
       setShowForm(false);
       setForm({
-        orderType: selectedChoice === "dine-in" ? "dine-in" : "takeaway",
+        orderType: selectedChoice === "Dine In" ? "Dine In" : "Take Away", // Corrected casing
         name: "",
         number: "",
         street: "",
@@ -96,7 +100,7 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
       setForm({
         orderType:
           mostRecentUserInfo.orderType ||
-          (selectedChoice === "dineIn" ? "dine-in" : "takeaway"),
+          (selectedChoice === "Dine In" ? "Dine In" : "Take Away"), // Corrected casing
         name: mostRecentUserInfo.name || "",
         number: mostRecentUserInfo.number || "",
         street: mostRecentUserInfo.street || "",
@@ -109,6 +113,11 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
       setShowForm(true);
     }
   };
+console.log("UserInfo.jsx - Rendering with selectedChoice:", selectedChoice);
+
+useEffect(() => {
+  localStorage.setItem("userInfoForm", JSON.stringify(form));
+}, [form]);
 
   return (
     <div className="user-info-container">
@@ -129,6 +138,8 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
               type="tel"
               placeholder="+91"
               name="number"
+              pattern="[0-9]{10}"
+              title="Enter a 10-digit mobile number"
               value={form.number}
               onChange={updateFormField}
               required
@@ -137,7 +148,7 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
           </div>
 
           {/* Conditional input for Dine In (Table number) */}
-          {selectedChoice === "dineIn" && (
+          {selectedChoice === "Dine In" && (
             <input
               type="text"
               placeholder="Table"
@@ -150,7 +161,7 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
           )}
 
           {/* Conditional inputs for Take Away (Address details) */}
-          {selectedChoice === "takeAway" && (
+          {selectedChoice === "Take Away" && (
             <div className="address-fields">
               <input
                 type="text"
@@ -204,7 +215,8 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
           <div className="itemCharges">
             <p>
               {" "}
-              <FaClock color="#4AB425" /> Delivery in{totalPreparationTime} mins
+              <FaClock color="#4AB425" /> Delivery in {totalPreparationTime}{" "}
+              mins
             </p>
           </div>
 
@@ -222,35 +234,24 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
                 {mostRecentUserInfo.name} , {mostRecentUserInfo.number} <br />
               </div>
               {/* Conditionally display address for 'takeaway' */}
-              {mostRecentUserInfo.orderType === "takeaway" && (
+              {mostRecentUserInfo.orderType === "Take Away" && (
                 <p className="delivery-address">
-                  <FaMapMarkerAlt color="#4AB425" /> Delivery at Home -
-                  Flat no:{mostRecentUserInfo.street
-                    ? ` ${mostRecentUserInfo.street},`
-                    : ""}
-                  {mostRecentUserInfo.city
-                    ? ` ${mostRecentUserInfo.city},`
-                    : ""}
-                  {mostRecentUserInfo.state
-                    ? ` ${mostRecentUserInfo.state},`
-                    : ""}
-                  {mostRecentUserInfo.zipCode
-                    ? ` ${mostRecentUserInfo.zipCode},`
-                    : ""}
-                  {mostRecentUserInfo.country
-                    ? ` ${mostRecentUserInfo.country}`
-                    : ""}
+                  <FaMapMarkerAlt color="#4AB425" /> Delivery at Home - Flat no:
+                  {mostRecentUserInfo.street ? ` ${mostRecentUserInfo.street},` : ""}
+                  {mostRecentUserInfo.city ? ` ${mostRecentUserInfo.city},` : ""}
+                  {mostRecentUserInfo.state ? ` ${mostRecentUserInfo.state},` : ""}
+                  {mostRecentUserInfo.zipCode ? ` ${mostRecentUserInfo.zipCode},` : ""}
+                  {mostRecentUserInfo.country ? ` ${mostRecentUserInfo.country}` : ""}
                 </p>
               )}
-              {mostRecentUserInfo.orderType === "dine-in" && (
-                <p>
-                   Table no {mostRecentUserInfo.table}
-                </p>
+              {mostRecentUserInfo.orderType === "Dine In" && (
+                <p>Table no {mostRecentUserInfo.table}</p>
               )}
 
               {totalPreparationTime > 0 && (
                 <p className="preparation-time">
-                <FaClock color="#4AB425" />   Delivery in <strong>{totalPreparationTime} mins</strong>
+                  <FaClock color="#4AB425" /> Delivery in{" "}
+                  <strong>{totalPreparationTime} mins</strong>
                 </p>
               )}
               <button className="edit-button" onClick={handleEdit}>
@@ -260,24 +261,23 @@ const UserInfo = ({ selectedChoice, totalPreparationTime }) => {
           )}
         </div>
       )}
-<div
-  className={`swipe-button ${!mostRecentUserInfo || showForm ? "disabled" : ""} ${swiped ? "swiped" : ""}`}
-  onClick={() => {
-    if (mostRecentUserInfo && !showForm) {
-      setSwiped(true);
-      setTimeout(() => {
-        navigate("/placeorder");
-      }, 700);
-    }
-  }}
->
-  <div className="circle">
-     <span className="arrow-icon">→</span>
-  </div>
-  <span className="swipe-text">Swipe to Order</span>
-</div>
-
-
+      <div
+        className={`swipe-button ${!mostRecentUserInfo || showForm ? "disabled" : ""} ${swiped ? "swiped" : ""}`}
+        onClick={() => {
+          if (mostRecentUserInfo && !showForm) {
+            setSwiped(true);
+            setTimeout(() => {
+              sendOrderToBackend();
+              navigate("/placeorder");
+            }, 700);
+          }
+        }}
+      >
+        <div className="circle">
+          <span className="arrow-icon">→</span>
+        </div>
+        <span className="swipe-text">Swipe to Order</span>
+      </div>
     </div>
   );
 };

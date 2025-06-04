@@ -25,9 +25,15 @@ require("./DB/connection");
 
 // Require Routes
 const userDetails = require("./routes/userDetails");
-
+const itemRoute = require("./routes/itemRoute");
+const cartRouter = require("./routes/cartRoutes")
 // Routes
 app.use("/api/food", userDetails);
+app.use("/api/food", itemRoute)
+app.use("/images", express.static('uploads'));
+app.use("/api/food", cartRouter)
+
+
 
 
 

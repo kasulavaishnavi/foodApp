@@ -1,10 +1,33 @@
-import { createContext, useState } from "react";
-import { food_list } from "../../assests/assets";
+import { createContext, useEffect, useState } from "react";
+// import { food_list } from "../../../../admin/src/assests/assets";
+import axios from "axios"
+
+
 
 export const ItemContext = createContext(null);
-const ItemConetxtProvider = (props) => {
+
+const ItemConetextProvider = (props) => {
+  const url = "http://localhost:4000";
   const [cart, setCart] = useState({});
   const [filteredFoodList, setFilteredFoodList] = useState(null);
+const [food_list, setFoodList] = useState([]);
+
+
+
+ // Load cart from localStorage when component mounts
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // Save cart to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  
 
   const itemsToCart = (itemId) => {
     if (!cart[itemId]) {
@@ -41,6 +64,7 @@ const ItemConetxtProvider = (props) => {
     for (const item in cart) {
       if (cart[item] > 0) {
         let iteminfo = food_list.find((prod) => prod._id === item);
+         if (!iteminfo) continue; 
         totalAmount += iteminfo.price * cart[item];
       }
     }
@@ -68,6 +92,20 @@ const ItemConetxtProvider = (props) => {
     setFilteredFoodList(null);
   };
 
+  const fetchList = async()=>{
+   try {
+    const res = await axios.get(`${url}/api/food/list`);
+    console.log("Fetched data:", res.data); 
+    setFoodList(res.data.data);
+  } catch (error) {
+    console.error("Error fetching food list:", error); 
+  }
+};
+
+useEffect(() => {
+  console.log("Calling fetchList...");
+  fetchList(); 
+}, []);
 
   const contextValue = {
     food_list,
@@ -88,4 +126,4 @@ const ItemConetxtProvider = (props) => {
   );
 };
 
-export default ItemConetxtProvider;
+export default ItemConetextProvider;

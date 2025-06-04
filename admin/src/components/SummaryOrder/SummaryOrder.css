@@ -1,0 +1,116 @@
+.SummaryCard {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 2px solid #dbd9d9;
+    padding: 20px;
+    margin: 10px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  font-size: 14px;
+  margin: 0;
+  color: #7a7a7a;
+}
+
+.date-selector {
+  position: relative;
+}
+
+.dropdownContainer {
+  padding: 2px 8px 5px 8px;
+  border-radius: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin-left: -50px;
+}
+
+
+.summary-values {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.value-item {
+  text-align: center;
+    height: 70px;
+  width: 95px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+border: 2px solid #dbd9d9;
+}
+
+.value-item .value {
+  font-size: 20px;
+  font-weight: 500;
+  color: #777;
+}
+
+.value-item .label {
+  font-size: 13px;
+  color: #999;
+}
+
+.chart-and-progress-container{
+  /* display: flex; */
+  padding-top: 20px;
+}
+
+.pie-chart-section{
+  padding-left: 10px;
+
+}
+.progress-bars{
+  /* margin-right: 10px; */
+}
+.progress-bars .progress-item {
+  margin-bottom: 10px;
+  display: flex;
+  width: 200px;
+}
+
+.progress-bars .progress-item .label {
+  font-size: 10px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  background-color: #e9ecef;
+  border-radius: 5px;
+  height: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.progress-bar .progress1 {
+  background-color: #666666; /* Example progress color */
+   height: 100%;
+  border-radius: 5px;
+}
+.progress-bar .progress2 {
+  background-color: #999999; /* Example progress color */
+   height: 100%;
+  border-radius: 5px;
+}
+
+
+.progress-bar .progress3 {
+  background-color: #CCCCCC; /* Example progress color */
+   height: 100%;
+  border-radius: 5px;
+}
+
+.summary-values{
+  margin-top: 10px;
+  margin-bottom: 0px;
+}

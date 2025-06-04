@@ -4,7 +4,7 @@ const DetailsSchema = mongoose.Schema({
   orderType: {
     type: String,
     required: true,
-    enum: ['dine-in', 'takeaway'],
+    enum: ['Dine In', 'Take Away'],
   },
   name: {
     type: String,
@@ -17,37 +17,37 @@ const DetailsSchema = mongoose.Schema({
   street: {
     type: String,
     required: function() {
-      return this.orderType === 'takeaway';
+      return this.orderType === 'Take Away';
     }
   },
   city: {
     type: String,
     required: function() {
-      return this.orderType === 'takeaway';
+      return this.orderType === 'Take Away';
     }
   },
   state: {
     type: String,
     required: function() {
-      return this.orderType === 'takeaway';
+      return this.orderType === 'Take Away';
     }
   },
   zipCode: {
     type: Number,
     required: function() {
-      return this.orderType === 'takeaway';
+      return this.orderType === 'Take Away';
     }
   },
   country: {
     type: String,
     required: function() {
-      return this.orderType === 'takeaway';
+      return this.orderType === 'Take Away';
     }
   },
   table: {
     type: Number,
     required: function() {
-      return this.orderType === 'dine-in';
+      return this.orderType === 'Dine In';
     }
   },
   createdAt: {

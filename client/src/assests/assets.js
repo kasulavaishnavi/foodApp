@@ -100,7 +100,7 @@ export const menu_list = [
   {
     menu_name: "Coffee",
     menu_image: coffee_logo,
-    time:20
+    time:10
   },
   {
     menu_name: "Fries",
@@ -120,27 +120,27 @@ export const menu_list = [
   {
     menu_name: "Rolls",
     menu_image: roll_logo,
-    time: 20
+    time: 15
   },
   {
     menu_name: "Pizza",
     menu_image: pizza_logo,
-    time: 25
+    time: 20
   },
   {
     menu_name: "Burger",
     menu_image: burger_logo,
-    time: 25
+    time: 20
   },
   {
     menu_name: "Pasta",
     menu_image: pasta_logo,
-    time:30
+    time:20
   },
   {
     menu_name: "Deserts",
     menu_image: dessert_logo,
-    time: 30,
+    time: 20,
   },
 ];
 
